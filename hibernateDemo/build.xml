@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="hibernateDemo" basedir="." default="dft">
+	<property name="driver" value="com.mysql.jdbc.Driver"></property>
+	<property name="url" value="jdbc:mysql://localhost:3306/mysql"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="1234"></property>
+    <target name="dft" description="创建数据库">
+    	<sql userid="${username}" url="${url}" password="${password}" driver="${driver}">
+    		<fileset dir="${basedir}/sql/create">
+    			<include name="**/*.sql"/>
+    		</fileset>
+    		<classpath>
+    			<fileset dir="${basedir}/lib">
+    				<include name="**/*.jar"/>
+    			</fileset>
+    		</classpath>
+    	</sql>
+    </target>
+</project>
